@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio de Christian Chiroy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #4B0082;
+            color: #fff;
+        }
+        header {
+            padding: 20px;
+            text-align: center;
+        }
+        .section {
+            padding: 40px;
+            text-align: center;
+        }
+        .vision, .values, .code {
+            background-color: #4B0082;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            border: 2px solid #000;
+        }
+        .vision p {
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Portafolio de Christian Chiroy</h1>
+    </header>
+
+    <div class="section vision">
+        <h2>Mi Visión</h2>
+        <p>Poder programar mi propio juego para desarrollar mis habilidades creativas y técnicas en el ámbito de la programación, permitiéndome innovar y aprender constantemente. Aspiro a crear experiencias únicas que inspiran y entretienen a otros, y a contribuir con mi conocimiento a la comunidad tecnológica.</p>
+    </div>
+
+    <div class="section values">
+        <h2>Mis Valores</h2>
+        <ul>
+            <li>Responsabilidad</li>
+            <li>Integridad</li>
+            <li>Creatividad</li>
+            <li>Empatía</li>
+            <li>Colaboración</li>
+        </ul>
+    </div>
+
+    <div class="section code">
+        <h2>Mi Código</h2>
+        <p>Es uno de mis primeros códigos que realice:</p>
+        <canvas id="gameCanvas" width="300" height="300" style="background-color: #000;"></canvas>
+        <script>
+            const canvas = document.getElementById('gameCanvas');
+            const ctx = canvas.getContext('2d');
+            let x = canvas.width / 2;
+            let y = canvas.height - 30;
+            let dx = 2;
+            let dy = -2;
+            let ballRadius = 10;
+
+            function drawBall() {
+                ctx.beginPath();
+                ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
+                ctx.fillStyle = '#4B0082';
+                ctx.fill();
+                ctx.closePath();
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                drawBall();
+                if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
+                    dx = -dx;
+                }
+                if (y + dy > canvas.height - ballRadius || y + dy < ballRadius) {
+                    dy = -dy;
+                }
+                x += dx;
+                y += dy;
+            }
+
+            setInterval(draw, 10);
+        </script>
+    </div>
+</body>
+</html>
